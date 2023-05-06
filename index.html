@@ -1,18 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주역 운세</title>
     <style>
+        body {
+            text-align: center;
+        }
         .result {
             display: none;
             background-color: #f9f9f9;
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        input {
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -27,75 +34,8 @@
     </div>
 
     <script>
-        const imageUrls = [
-                https://drive.google.com/file/d/1RtetoGvOwzMBnm0i2dDlvyJVxsIsyATY/view?usp=share_link,
-                https://drive.google.com/file/d/14HfLnjBYQ37JC2B0UkQCwDuKDFmjr5-j/view?usp=share_link,
-                https://drive.google.com/file/d/1pwzqJr9eE0XM1xzf9VG5M6mDV8B4dAC6/view?usp=share_link,
-                https://drive.google.com/file/d/18q48rTPxIM_yi6SR9BkMu5SYYrwSv-Qv/view?usp=share_link,
-                https://drive.google.com/file/d/1TYoWuE_eHR_BijaQJiJev2X9S_2SoWP5/view?usp=share_link,
-                https://drive.google.com/file/d/1bqYQkoByPP-c7tRQzziu2fceSShWgbJY/view?usp=share_link,
-                https://drive.google.com/file/d/12phzzh8Z-NlWw_Bgz9v4rs4Obs6gX0hF/view?usp=share_link,
-                https://drive.google.com/file/d/1x-JWgfaIK1ZkEMfWhFVjPj9bC0SJtkhK/view?usp=share_link,
-                https://drive.google.com/file/d/1hvXdwrlZxnp7AVP3KZRhG4Q1UKw9mNcN/view?usp=share_link,
-                https://drive.google.com/file/d/1072M3BFptMJFLPuzOEQJYG0KE1gcjqgb/view?usp=share_link,
-                https://drive.google.com/file/d/1p4Fk1NEh0hEl8uhk7YHIH3Pgx5JFlzM2/view?usp=share_link,
-                https://drive.google.com/file/d/1bDlt3DgYORokuNAM7wnhsfytKjvlXd_C/view?usp=share_link,
-                https://drive.google.com/file/d/1pmh2vu-sNLmY7HxRklzq0ruXFmVup9uz/view?usp=share_link,
-                https://drive.google.com/file/d/1pmh2vu-sNLmY7HxRklzq0ruXFmVup9uz/view?usp=share_link,
-                https://drive.google.com/file/d/1zHF-Ajxgjp447bRp9yWxEYanWJ9xvO29/view?usp=share_link,
-                https://drive.google.com/file/d/1s-UDJJtGnV8NtqI0h4MOWfH8d00pIObj/view?usp=share_link,
-                https://drive.google.com/file/d/1vyZIT_3oDIvQjYssCuXffwbqYuoCSWxg/view?usp=share_link,
-                https://drive.google.com/file/d/1tx6vPbqGp54p1rS-yLNe4FprFMnEVSib/view?usp=share_link,
-                https://drive.google.com/file/d/11CGr6dn3ix4fXp4cDCSEo3I6kIVJBzoO/view?usp=share_link,
-                https://drive.google.com/file/d/1yQ02mFAEM-kMyf_bG9nd2oKVBKFo0rFU/view?usp=share_link,
-                https://drive.google.com/file/d/1vcqCBkuqRlHrvL-OWDLO1HmsvO_qRDwn/view?usp=share_link,
-                https://drive.google.com/file/d/1T23KiXfg7lkk1l1--WleFXBRB0bz5rxg/view?usp=share_link,
-                https://drive.google.com/file/d/13SyzqBYstxVOkMzCawxj82H25vy_cLVB/view?usp=share_link,
-                https://drive.google.com/file/d/1K4IvUq3-j8I4pJyKOYy3di9Ogf6jgBDf/view?usp=share_link,
-                https://drive.google.com/file/d/1IUmTDz41An1VnIx2P1fbZBGr-KUAQpUO/view?usp=share_link,
-                https://drive.google.com/file/d/1Ps04kI1KO5GU0IufcsdN8_gmYBrc5u8_/view?usp=share_link,
-                https://drive.google.com/file/d/1O38nIDpQ11Gk9rhxAdBAZiWinNcUlvtg/view?usp=share_link,
-                https://drive.google.com/file/d/1cNsp77HK2OwhkDSC--CUAD4BwrbbyX_r/view?usp=share_link,
-                https://drive.google.com/file/d/1jvrrfaJbQgBvm9Sad9cqKZrpAtjKC0Il/view?usp=share_link,
-                https://drive.google.com/file/d/1S7Bwiumdx4t_ExlSzkUnn50I__zXhr3r/view?usp=share_link,
-                https://drive.google.com/file/d/1-sOM06QSq1N7AInNUwrk-ZacpEfuQRLW/view?usp=share_link,
-                https://drive.google.com/file/d/1-1o5x_zQTDh9KZWNa6LVxB6aRwOxL6d9/view?usp=share_link,
-                https://drive.google.com/file/d/1MsyzSroQi5Nyeabg1U6NNDvgPtXFKK6O/view?usp=share_link,
-                https://drive.google.com/file/d/1nlszT6hJCqnD7EkGRIHhv_mpe3fHTQax/view?usp=share_link,
-                https://drive.google.com/file/d/1rVwqlG7eiXUc7mOkhOzkrDLK8nE8vWx_/view?usp=share_link,
-                https://drive.google.com/file/d/1YHjuEjkHS6J5h5lhbHTcEVb5SYIOFGDr/view?usp=share_link,
-                https://drive.google.com/file/d/1VACNUfzkmE4vULEjZHnP0WwCvXIP5qZ1/view?usp=share_link,
-                https://drive.google.com/file/d/1-o_xj-7ArHv90IkeMGKDzrbEt2vcaFcZ/view?usp=share_link,
-                https://drive.google.com/file/d/1R74CT69d6fE0vA8NmCH8F4GyjeCLecFV/view?usp=share_link,
-                https://drive.google.com/file/d/1O0Ol8RzdO-3rxVgVI-AZSZzXN5fdIof0/view?usp=share_link,
-                https://drive.google.com/file/d/1c3Xq6jPAhSyex8aicJDmaroMVwhEUYSD/view?usp=share_link,
-                https://drive.google.com/file/d/1K3zRWzqsmfkuQcfyM8jGVokxm-ozsjss/view?usp=share_link,
-                https://drive.google.com/file/d/19Dm64Yu6WB-3ZbZ5ByG-svYbOw2n8fjj/view?usp=share_link,
-                https://drive.google.com/file/d/1Fv6F40ZUGZEb3qZn6xUWR7NwZVV877av/view?usp=share_link,
-                https://drive.google.com/file/d/1nrYN5BbMmDdNwFNCLw_lnKhfhvtvMu-m/view?usp=share_link,
-                https://drive.google.com/file/d/1QeQm9PA0bjvod03MQA36ZkmxurtGAqd6/view?usp=share_link,
-                https://drive.google.com/file/d/1lcJVIEb0YCxnmNJsccxd3-GivPXUdMDg/view?usp=share_link,
-                https://drive.google.com/file/d/1H1dfUaKcgIul4yMI4FyDUqJMaU4XDJAz/view?usp=share_link,
-                https://drive.google.com/file/d/16YAdWC-yNJPY6EOrovFz5uBnlVT7ZhfV/view?usp=share_link,
-                https://drive.google.com/file/d/1ENs64VjSIlhCrRaJ6Vv2ZW0c_HQlgtaC/view?usp=share_link,
-                https://drive.google.com/file/d/1tGWnEraTOEQkhLtntrBlaRELq-kahpKs/view?usp=share_link,
-                https://drive.google.com/file/d/1zeH_tGWkPXfTO4raZIYoV9pKo39DhTSr/view?usp=share_link,
-                https://drive.google.com/file/d/1jw5lUCKPwkMPXi5HzYmxo080634RkdnS/view?usp=share_link,
-                https://drive.google.com/file/d/1EH5Wre2_kHa6t9CpvahtkofleRmt-avL/view?usp=share_link,
-                https://drive.google.com/file/d/1AztXbhKVwZeMAjd_Q4_cW2sIUQMbkvuz/view?usp=share_link,
-                https://drive.google.com/file/d/1WKWVlY0-qc31XRCKSqhLJKgGWYVoWMsm/view?usp=share_link,
-                https://drive.google.com/file/d/1pQQ9q50WwUEIoDNBk6WteI_xHAQX-cf7/view?usp=share_link,
-                https://drive.google.com/file/d/19O1893xUcNEUFP5hnJHvFvVcgOj_ZTJs/view?usp=share_link,
-                https://drive.google.com/file/d/1h9NR21jDyDuXGP0jxPYpzckwN97kIfwE/view?usp=share_link,
-                https://drive.google.com/file/d/1xmKYZRs7NF3swQlAQ3EMzyxllPoLW6jW/view?usp=share_link,
-                https://drive.google.com/file/d/1di_nOyNfMsjdDw1yiauofEqveWqQhnso/view?usp=share_link,
-                https://drive.google.com/file/d/1u1Su3AeKsr_EpAxlMgywv_q2F9y9kvb6/view?usp=share_link,
-                https://drive.google.com/file/d/15jwIij-Nq_3lNHiwmJ_TEGa5Bhl4FjKe/view?usp=share_link,
-                https://drive.google.com/file/d/1twcjUkOMT3uU3ZSPsqhhKzkLrrNUqzsy/view?usp=share_link,       
-        ];
-
         const korean_values0 = {
-                '111111': '01 건위천',
+            '111111': '01 건위천',
                 '000000': '02 곤위지',
                 '010001': '03 수뢰둔',
                 '100010': '04 산수몽',
@@ -1140,9 +1080,83 @@
                   ),
         };
 
+        const imageUrls = [
+            'https://8richfileds.github.io/qiching/01.jpeg',
+            'https://8richfileds.github.io/qiching/02.jpeg',
+            'https://8richfileds.github.io/qiching/03.jpeg',
+            'https://8richfileds.github.io/qiching/04.jpeg',
+            'https://8richfileds.github.io/qiching/05.jpeg',
+            'https://8richfileds.github.io/qiching/06.jpeg',
+            'https://8richfileds.github.io/qiching/07.jpeg',
+            'https://8richfileds.github.io/qiching/08.jpeg',
+            'https://8richfileds.github.io/qiching/09.jpeg',
+            'https://8richfileds.github.io/qiching/10.jpeg',
+            'https://8richfileds.github.io/qiching/11.jpeg',
+            'https://8richfileds.github.io/qiching/12.jpeg',
+            'https://8richfileds.github.io/qiching/13.jpeg',
+            'https://8richfileds.github.io/qiching/14.jpeg',
+            'https://8richfileds.github.io/qiching/15.jpeg',
+            'https://8richfileds.github.io/qiching/16.jpeg',
+            'https://8richfileds.github.io/qiching/17.jpeg',
+            'https://8richfileds.github.io/qiching/18.jpeg',
+            'https://8richfileds.github.io/qiching/19.jpeg',
+            'https://8richfileds.github.io/qiching/20.jpeg',
+            'https://8richfileds.github.io/qiching/21.jpeg',
+            'https://8richfileds.github.io/qiching/22.jpeg',
+            'https://8richfileds.github.io/qiching/23.jpeg',
+            'https://8richfileds.github.io/qiching/24.jpeg',
+            'https://8richfileds.github.io/qiching/25.jpeg',
+            'https://8richfileds.github.io/qiching/26.jpeg',
+            'https://8richfileds.github.io/qiching/27.jpeg',
+            'https://8richfileds.github.io/qiching/28.jpeg',
+            'https://8richfileds.github.io/qiching/29.jpeg',
+            'https://8richfileds.github.io/qiching/30.jpeg',
+            'https://8richfileds.github.io/qiching/31.jpeg',
+            'https://8richfileds.github.io/qiching/32.jpeg',
+            'https://8richfileds.github.io/qiching/33.jpeg',
+            'https://8richfileds.github.io/qiching/34.jpeg',
+            'https://8richfileds.github.io/qiching/35.jpeg',
+            'https://8richfileds.github.io/qiching/36.jpeg',
+            'https://8richfileds.github.io/qiching/37.jpeg',
+            'https://8richfileds.github.io/qiching/38.jpeg',
+            'https://8richfileds.github.io/qiching/39.jpeg',
+            'https://8richfileds.github.io/qiching/40.jpeg',
+            'https://8richfileds.github.io/qiching/41.jpeg',
+            'https://8richfileds.github.io/qiching/42.jpeg',
+            'https://8richfileds.github.io/qiching/43.jpeg',
+            'https://8richfileds.github.io/qiching/44.jpeg',
+            'https://8richfileds.github.io/qiching/45.jpeg',
+            'https://8richfileds.github.io/qiching/46.jpeg',
+            'https://8richfileds.github.io/qiching/47.jpeg',
+            'https://8richfileds.github.io/qiching/48.jpeg',
+            'https://8richfileds.github.io/qiching/49.jpeg',
+            'https://8richfileds.github.io/qiching/50.jpeg',
+            'https://8richfileds.github.io/qiching/51.jpeg',
+            'https://8richfileds.github.io/qiching/52.jpeg',
+            'https://8richfileds.github.io/qiching/53.jpeg',
+            'https://8richfileds.github.io/qiching/54.jpeg',
+            'https://8richfileds.github.io/qiching/55.jpeg',
+            'https://8richfileds.github.io/qiching/56.jpeg',
+            'https://8richfileds.github.io/qiching/57.jpeg',
+            'https://8richfileds.github.io/qiching/58.jpeg',
+            'https://8richfileds.github.io/qiching/59.jpeg',
+            'https://8richfileds.github.io/qiching/60.jpeg',
+            'https://8richfileds.github.io/qiching/61.jpeg',
+            'https://8richfileds.github.io/qiching/62.jpeg',
+            'https://8richfileds.github.io/qiching/63.jpeg',
+            'https://8richfileds.github.io/qiching/64.jpeg',
+        ];
+
         function getImageUrl(binary_value) {
             const image_number = parseInt(korean_values0[binary_value].split(' ')[0]) - 1;
             return imageUrls[image_number];
+        }
+
+        function generateRandomBinaryValue() {
+            const binary_values = ['111', '011', '101', '001', '110', '010', '100', '000'];
+            const first_digit = binary_values[Math.floor(Math.random() * binary_values.length)];
+            const second_digit = binary_values[Math.floor(Math.random() * binary_values.length)];
+            return first_digit + second_digit;
         }
 
         function showFortune() {
