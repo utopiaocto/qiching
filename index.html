@@ -1,35 +1,35 @@
+html
+Copy code
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>주역 운세</title>
+    <title>Fortune Teller</title>
     <style>
         body {
             text-align: center;
         }
+
         .result {
             display: none;
             background-color: #f9f9f9;
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-        input {
-            display: block;
-            margin: 0 auto;
+            margin-top: 10px;
         }
     </style>
 </head>
+
 <body>
-    <h1>당신의 이름을 입력하세요</h1>
-    <input type="text" id="name" placeholder="이름을 입력해 주세요">
-    <button onclick="showFortune()">운세 확인하기</button>
+    <h1>Enter Your Name</h1>
+    <input type="text" id="name" placeholder="Type your name">
+    <p></p>
+    <button onclick="showFortune()">Check My Fortune</button>
     <div class="result">
         <h2 id="output"></h2>
-        <img id="image" src="" alt="주역 이미지" />
+        <img id="image" src="" alt="I Ching image" />
         <p id="fortune"></p>
     </div>
 
