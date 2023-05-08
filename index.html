@@ -46,8 +46,20 @@
         }
 
     </style>
+    
 </head>
-
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>운세 확인하기</title>
+    <style>
+        .result {
+            text-align: justify;
+        }
+    </style>
+</head>
+    
 <body>
     <h1>Enter what you wonder about the futuree!</h1>
     <input type="text" id="name" placeholder="Type what you wonder about the futuree">
@@ -1191,8 +1203,6 @@
             const korean_value0 = korean_values0[binary_value];
             const korean_value = korean_values[binary_value];
 
-            // document.querySelector('#output').innerHTML = name + ', ' + ' 당신의 현재 운세는' + korean_value0  + ' 입니다.';
-
             document.querySelector('#output').innerHTML = '당신이 궁금해 하는 운세는?<br>' + korean_value0 + ' 입니다.';
             document.querySelector('#image').src = getImageUrl(binary_value);
             document.querySelector('#fortune').innerHTML =
@@ -1204,7 +1214,9 @@
                 korean_value;
 
             document.querySelector('.result').style.display = 'block';
+            document.querySelector('.result').classList.add('result');
         }
+
     </script>
 </body>
 </html>
