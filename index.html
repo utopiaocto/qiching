@@ -49,10 +49,10 @@
 </head>
 
 <body>
-    <h1>Enter Your Name</h1>
-    <input type="text" id="name" placeholder="Type your name">
+    <h1>Enter what you know on future!</h1>
+    <input type="text" id="name" placeholder="Type what you know on future">
     <p></p>
-    <button onclick="showFortune()">Check My Fortune</button>
+    <button onclick="showFortune()">Show My Fortune</button>
     <div class="result">
         <h2 id="output"></h2>
         <img id="image" src="" alt="I Ching image" />
@@ -1191,7 +1191,7 @@
             const korean_value0 = korean_values0[binary_value];
             const korean_value = korean_values[binary_value];
 
-            document.querySelector('#output').innerHTML = name + ', ' + korean_value0 + ' 운세';
+            document.querySelector('#output').innerHTML = name + ', ' + korean_value0 + ' 당신의 현재 운세';
             document.querySelector('#image').src = getImageUrl(binary_value);
             document.querySelector('#fortune').innerHTML =
                 '♣ 운명코드 = ' + binary_value + '<br>' +
