@@ -1360,7 +1360,7 @@
             const english_value_rest = " Represents" + english_value_parts[1];
             const english_value_split = english_value_rest.split("Summary of future predictions<br><br>");
             const english_value_overall = english_value_split[0];
-            const english_value_detailed = english_value_split[1] || "Detailed fortune is not available.";
+            const english_value_detailed = english_value_split[1];
 
             document.querySelector('#fortune').innerHTML =
                 '<div style="background-color: skyblue; color: white; padding: 10px; margin: 10px;">' +
