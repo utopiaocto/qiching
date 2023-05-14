@@ -1354,21 +1354,38 @@
             const binary_value = generateRandomBinaryValue();
 
             // if binary_value is not defined in the english_values0 or english_values, set a default value
-            const english_value0 = english_values0[binary_value] || "미정의 값";
-            const english_value1 = transformed_english_values0[binary_value] || "미정의 값";
+            const english_value0 = english_values0[binary_value] || "Undefined value";
             const english_value = english_values[binary_value] || "Undefined value";
-            const image_url = getImageUrl(binary_value);
 
-            const fortune_element = document.querySelector('#fortune');
-            const image_element = document.querySelector('#image');
-            
-            // Set the fortune and the image
-            fortune_element.innerHTML = `Hello, ${name}.<br><br>Your fortune: ${english_value0}<br> Your transformed fortune: ${english_value1}<br> Final fortune: ${english_value}`;
-            image_element.src = image_url;
+            document.querySelector('#output').innerHTML = '☯︎ The I Ching hexagram I have observed currently is <br>' + english_value0 + ' the hexagram.';
+            document.querySelector('#image').src = getImageUrl(binary_value);
+
+            // Split english_value into two parts
+            const english_value_parts = english_value.split("Summary of future predictions<br><br>");
+            const english_value_overall = english_value_parts[0];
+            const english_value_detailed = english_value_parts[1] || "Detailed fortune is not available.";
+
+            document.querySelector('#fortune').innerHTML =
+                '<br>' +
+                '<span style="font-size: 20px; font-weight: bold;">☯︎ My current situation observation code = ' + binary_value + '</span><br>' +
+                '--------------------------<br>' +
+                '<br>' +
+                '<span style="font-size: 20px; font-weight: bold;">☯︎ Interpretation of my observed situation</span><br>' +
+                '--------------------------<br>' +
+                '<br>' +
+                '<div style="text-align: center; color: white; background-color: black;">' + 
+                '<span style="font-size: 17px; font-weight: bold;">' + english_value_overall + "</span><br>" +
+                '<span style="font-size: 20px; font-weight: bold;">☯︎ Detailed fortune based on my observed situation</span> <br>' +
+                '--------------------------<br>' +  
+                '<br>' +
+                '</div>' +
+                '<div style="text-align: left; color: white; background-color: black;">' +
+                '<span style="font-size: 16px; font-weight: 900;">' + english_value_detailed + '</span></div><br><br><br>' +
+                '--------------------------<br><br>' +
+                'This program, photographs, and works are the property of Octo. Unauthorized use will result in legal punishment.<br></div>';
+            document.querySelector('.result').style.display = 'block';
+            document.querySelector('.result').classList.add('result');
         }
-
-        // When the button is clicked, call the showFortune function
-        document.querySelector('#button').addEventListener('click', showFortune);
     </script>
 </body>
 </html>
