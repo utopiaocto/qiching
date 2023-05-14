@@ -73,7 +73,6 @@
     </style>
 </head>
 
-
 <body>
     <div class="content-box">
         <img id="initialImage" src="https://raw.githubusercontent.com/utopiaocto/ichingview/main/00.jpeg" alt="" />
@@ -86,6 +85,7 @@
         <div class="result">
             <h2 id="output"></h2>
             <img id="image" src="" alt="" />
+            <img id="resultImage" src="" />
             <p id="fortune"></p>
         </div>
         <div class="padding-bottom"></div>
@@ -1356,7 +1356,7 @@
             const english_value = english_values[binary_value] || "Undefined value";
 
             document.querySelector('#output').innerHTML = '☯︎ My I Ching Code is, <br>' + english_value0 + ' the hexagram.';
-            document.querySelector('#image').src = getImageUrl(binary_value);
+            document.querySelector('#resultImage').src = getImageUrl(binary_value);
 
             // Split english_value into three parts
             const english_value_parts = english_value.split(" Represents");
