@@ -1362,29 +1362,30 @@
             document.querySelector('#image').src = getImageUrl(binary_value);
 
             // Split english_value into two parts
-            const english_value_parts = english_value.split("Represents");
+            const english_value_parts = english_value.split(" Represents");
             const hexagram_name = english_value_parts[0];
-            const english_value_rest = english_value_parts[1].split("Summary of future predictions<br><br>");
-            const english_value_overall = "Represents" + english_value_rest[0];
-            const english_value_detailed = english_value_rest[1] || "Detailed fortune is not available.";
+            const english_value_rest = " Represents" + english_value_parts[1];
+            const english_value_split = english_value_rest.split("Summary of future predictions<br><br>");
+            const english_value_overall = english_value_split[0];
+            const english_value_detailed = english_value_split[1] || "Detailed fortune is not available.";
 
             document.querySelector('#fortune').innerHTML =
-                '<br>' +
-                '<span style="font-size: 21px; font-weight: bold; color: yellow;">☯︎ My Fortune Code = ' + binary_value + '</span><br>' +
+                '<div style="background-color: green; color: white; padding: 10px; margin: 10px;">' +
+                '<span style="font-size: 21px; font-weight: bold;">☯︎ My Fortune Digital Code = ' + binary_value + '</span><br>' +
                 '--------------------------<br>' +
-                '<br>' +
-                '<span style="font-size: 21px; font-weight: bold; color: yellow;">☯︎ Interpretation of My Code</span><br>' +
-                '--------------------------<br>' +
-                '<br>' +
-                '<div style="text-align: center; color: white; background-color: black;">' + 
-                '<span style="font-size: 8px; font-weight: bold; color: black;">' + hexagram_name + '</span><br>' +
-                '<span style="font-size: 17px;">' + english_value_overall + "</span><br>" +
-                '<span style="font-size: 23px; font-weight: bold; color: yellow;">☯︎ Interpretation of Detailed fortune</span> <br>' +
-                '--------------------------<br>' +  
-                '<br>' +
                 '</div>' +
-                '<div style="text-align: left; color: white; background-color: black;">' +
-                '<span style="font-size: 15px;">' + english_value_detailed + '</span></div><br><br><br>' +
+                '<div style="background-color: green; color: white; padding: 10px; margin: 10px;">' +
+                '<span style="font-size: 21px; font-weight: bold;">☯︎ Interpretation of My Code</span><br>' +
+                '--------------------------<br>' +
+                '<span style="font-size: 1px; font-weight: bold;">' + hexagram_name + '</span><br>' +
+                '<span style="font-size: 17px;">' + english_value_overall + "</span><br>" +
+                '</div>' +
+                '<div style="background-color: green; color: white; padding: 10px; margin: 10px;">' +
+                '<span style="font-size: 23px; font-weight: bold;">☯︎ Interpretation of Detailed Fortune</span> <br>' +
+                '--------------------------<br>' +
+                '<span style="font-size: 15px;">' + english_value_detailed + '</span>' +
+                '</div>' +
+                '<div style="margin: 10px;">' +
                 '--------------------------<br><br>' +
                 'This program, photographs, and works are the property of Octo. Unauthorized use will result in legal punishment.<br></div>';
             document.querySelector('.result').style.display = 'block';
