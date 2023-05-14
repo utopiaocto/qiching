@@ -9,26 +9,26 @@
         html, body {
             text-align: center;
             font-family: 'Alegreya', serif;
-            background-color: black; /* Set background color to black */
-            color: white; /* Set text color to white */
-            overflow-x: hidden; /* Hide horizontal scroll */
+            background-color: black;
+            color: white;
+            overflow-x: hidden;
             padding: 0;
             margin: 0;
-            width: 97%; /* Set width to 100% */
-            max-width: 600px; /* Set max-width for larger devices */
+            width: 97%;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .result {
             display: none;
-            background-color: black; /* Set background color to black */
+            background-color: black;
             padding: 10px;
             border: 2px solid #ddd;
             border-radius: 5px;
             margin-top: 15px;
-            color: white; /* Set text color to white */
-            width: 90%; /* Set width to 90% */
+            color: white;
+            width: 90%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -40,7 +40,7 @@
 
         #name {
             font-size: 16px;
-            width: 90%; /* Set width to 80% */
+            width: 90%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -54,7 +54,7 @@
             text-transform: uppercase;
             border: none;
             cursor: pointer;
-            width: 90%; /* Set width to 90% */
+            width: 90%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -64,7 +64,7 @@
         }
 
         .padding-bottom {
-            padding-bottom: 200px; /* Adjust this value to your needs */
+            padding-bottom: 200px;
         }
 
     </style>
@@ -1349,46 +1349,26 @@
             const second_digit = binary_values[Math.floor(Math.random() * binary_values.length)];
             return first_digit + second_digit;
         }
-        
         function showFortune() {
             const name = document.querySelector('#name').value;
             const binary_value = generateRandomBinaryValue();
 
             // if binary_value is not defined in the english_values0 or english_values, set a default value
-            const english_value0 = english_values0[binary_value] || "Undefined value";
-            const english_value1 = transformed_english_values0[binary_value] || "Undefined value";
+            const english_value0 = english_values0[binary_value] || "미정의 값";
+            const english_value1 = transformed_english_values0[binary_value] || "미정의 값";
             const english_value = english_values[binary_value] || "Undefined value";
+            const image_url = getImageUrl(binary_value);
 
-            document.querySelector('#output').innerHTML = '☯︎ The I Ching hexagram I have observed currently is <br>' + english_value0 + ' the hexagram.';
-            document.querySelector('#image').src = getImageUrl(binary_value);
-
-            // Split english_value into two parts
-            const english_value_parts = english_value.split("[Detailed fortune] <br><br>");
-            const english_value_overall = english_value_parts[0];
-            const english_value_detailed = english_value_parts[1] || "Detailed fortune is not available.";
-
-            document.querySelector('#fortune').innerHTML =
-            '<br>' +
-            '<span style="font-size: 20px; font-weight: bold; color: yellow;">☯︎ My current situation observation code = ' + binary_value + '</span><br>' +
-            '--------------------------<br>' +
-            '<br>' +
-            '<span style="font-size: 20px; font-weight: bold; color: yellow;">☯︎ Interpretation of my observed situation</span><br>' +
-            '--------------------------<br>' +
-            '<br>' +
-            '<div style="text-align: center; color: white; background-color: black;">' + 
-            '<span style="font-size: 17px; font-weight: bold; color: yellow;">' + english_value_overall + "</span><br>" +
-            '<span style="font-size: 20px; font-weight: bold; color: yellow;">☯︎ The solution to the specific situation I have observed</span> <br>' +
-            '--------------------------<br>' +  
-            '<br>' +
-            '</div>' +
-            '<div style="text-align: left; color: white; background-color: black;">' +
-            '<span style="font-size: 16px; font-weight: 900;">' + english_value_detailed + '</span></div><br><br><br>' +
-            '--------------------------<br><br>' +
-            'This program, photographs, and works are the property of Octo. Unauthorized use will result in legal punishment.<br></div>';
-            document.querySelector('.result').style.display = 'block';
-            document.querySelector('.result').classList.add('result');
+            const fortune_element = document.querySelector('#fortune');
+            const image_element = document.querySelector('#image');
+            
+            // Set the fortune and the image
+            fortune_element.innerHTML = `Hello, ${name}.<br><br>Your fortune: ${english_value0}<br> Your transformed fortune: ${english_value1}<br> Final fortune: ${english_value}`;
+            image_element.src = image_url;
         }
 
+        // When the button is clicked, call the showFortune function
+        document.querySelector('#button').addEventListener('click', showFortune);
     </script>
 </body>
 </html>
