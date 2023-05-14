@@ -12,10 +12,10 @@
             background-color: black;
             color: white;
             overflow-x: hidden;
-            padding: 0;
-            margin: 0;
-            width: 90%;
-            max-width: 500px;
+            padding: 10;
+            margin: 10;
+            width: 97%;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -23,7 +23,7 @@
         .result {
             display: none;
             background-color: black;
-            padding: 1px;
+            padding: 10px;
             border: 2px solid #ddd;
             border-radius: 5px;
             margin-top: 15px;
@@ -70,7 +70,7 @@
         .text-container {
             background-color: green;
             color: white;
-            padding: 0px;
+            padding: 10px;
             border-radius: 5px;
         }
 
@@ -85,7 +85,7 @@
 
 <body style="padding-left: 15px; padding-right: 15px;">
     <img id="initialImage" src="https://raw.githubusercontent.com/utopiaocto/ichingview/main/00.jpeg" alt="I Ching image" />
-    <h5> "Everything is made up of atoms!"  - Richard Feynman -   </h5>
+    <h4> "Everything is made up of atoms!"  - Richard Feynman -   </h4>
     <div class="text-container">
         <h5>Quantum physics and I Ching both deal with atoms as particles or waves. Sincere desires create waves which generate answers in the form of particles, a principle applied in this program, the first quantum I Ching algorithm. Niels Bohr, father of quantum physics, won a Nobel prize for discovering this in I Ching. Write your story with sincerity below to design your future.</h5>
     </div>
@@ -1374,22 +1374,29 @@
             const english_value_rest = " Represents" + english_value_parts[1];
             const english_value_split = english_value_rest.split("Summary of future predictions<br><br>");
             const english_value_overall = english_value_split[0];
-            const english_value_detailed = english_value_split[1] || "Detailed fortune is not available.";
+            const english_value_detailed = "Summary of future predictions<br><br>" + english_value_split[1] || "Detailed fortune is not available.";
 
             document.querySelector('#fortune').innerHTML =
                 '<div style="background-color: skyblue; color: white; padding: 10px; margin: 10px;">' +
                 '<span style="font-size: 21px; font-weight: bold;">☯︎ My Fortune Code = ' + binary_value + '</span><br>' +
                 '</div>' +
+
                 '<div style="background-color: green; color: white; padding: 10px; margin: 10px;">' +
                 '<span style="font-size: 21px; font-weight: bold;">☯︎ Interpretation of My Code</span><br>' +
+                '</div>' +
+
+                '<div style="background-color: yellow; color: black; padding: 10px; margin: 15px;">' +
                 '<span style="font-size: 17px;">' + english_value_overall + "</span><br>" +
                 '</div>' +
+
                 '<div style="background-color: green; color: white; padding: 10px; margin: 10px;">' +
                 '<span style="font-size: 23px; font-weight: bold;">☯︎ Detailed Interpretation</span>' +
                 '</div>' +
+
                 '<div style="background-color: yellow; color: black; padding: 10px; margin: 15px;">' +
                 '<span style="font-size: 15px;">' + english_value_detailed + '</span>' +
                 '</div>' +
+
                 '<div style="margin: 10px;">' +
                 '<br><br><br>' +
                 'This program, photographs, and works are the property of Octo. Unauthorized use will result in legal punishment.<br></div>';
