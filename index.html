@@ -1349,6 +1349,7 @@
             const second_digit = binary_values[Math.floor(Math.random() * binary_values.length)];
             return first_digit + second_digit;
         }
+        
         function showFortune() {
             const name = document.querySelector('#name').value;
             const binary_value = generateRandomBinaryValue();
@@ -1361,9 +1362,11 @@
             document.querySelector('#image').src = getImageUrl(binary_value);
 
             // Split english_value into two parts
-            const english_value_parts = english_value.split("Summary of future predictions<br><br>");
-            const english_value_overall = english_value_parts[0];
-            const english_value_detailed = english_value_parts[1] || "Detailed fortune is not available.";
+            const english_value_parts = english_value.split("Represents");
+            const hexagram_name = english_value_parts[0];
+            const english_value_rest = english_value_parts[1].split("Summary of future predictions<br><br>");
+            const english_value_overall = "Represents" + english_value_rest[0];
+            const english_value_detailed = english_value_rest[1] || "Detailed fortune is not available.";
 
             document.querySelector('#fortune').innerHTML =
                 '<br>' +
@@ -1374,6 +1377,7 @@
                 '--------------------------<br>' +
                 '<br>' +
                 '<div style="text-align: center; color: white; background-color: black;">' + 
+                '<span style="font-size: 23px; font-weight: bold; color: yellow;">' + hexagram_name + '</span><br>' +
                 '<span style="font-size: 17px;">' + english_value_overall + "</span><br>" +
                 '<span style="font-size: 23px; font-weight: bold; color: yellow;">☯︎ Detailed fortune based on my observed situation</span> <br>' +
                 '--------------------------<br>' +  
