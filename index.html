@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>오늘의 운세 by Quantum IChing</title>
+    <title>The Quantum IChing</title>
     <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&display=swap" rel="stylesheet">
     <style>
         html, body {
@@ -48,7 +48,7 @@
         button {
             background-color: #4B0082;
             color: white;
-            font-size: 23px;
+            font-size: 20px;
             font-weight: bold;
             padding: 10px 20px;
             text-transform: uppercase;
@@ -84,7 +84,7 @@
     <h4> 😃 Please write down your current pressing concerns. The more detailed and earnest your writing, the more accurate the answer you will receive. 😃 </h4>
     <input type="text" id="name" placeholder="Type here and then press the button below.">
     <p></p>
-    <button onclick="showFortune()">Observe my current situation</button>
+    <button onclick="showFortune()">Observe My Fortune</button>
     <div class="result">
         <h2 id="output"></h2>
         <img id="image" src="" alt="I Ching image" />
@@ -1370,14 +1370,14 @@
 
             document.querySelector('#fortune').innerHTML =
                 '<br>' +
-                '<span style="font-size: 23px; font-weight: bold; color: yellow;">☯︎ My Fortune Digital Code = ' + binary_value + '</span><br>' +
+                '<span style="font-size: 21px; font-weight: bold; color: yellow;">☯︎ My Fortune Code = ' + binary_value + '</span><br>' +
                 '--------------------------<br>' +
                 '<br>' +
-                '<span style="font-size: 23px; font-weight: bold; color: yellow;">☯︎ Interpretation of My Code</span><br>' +
+                '<span style="font-size: 21px; font-weight: bold; color: yellow;">☯︎ Interpretation of My Code</span><br>' +
                 '--------------------------<br>' +
                 '<br>' +
                 '<div style="text-align: center; color: white; background-color: black;">' + 
-                '<span style="font-size: 23px; font-weight: bold; color: yellow;">' + hexagram_name + '</span><br>' +
+                '<span style="font-size: 21px; font-weight: bold; color: yellow;">' + hexagram_name + '</span><br>' +
                 '<span style="font-size: 17px;">' + english_value_overall + "</span><br>" +
                 '<span style="font-size: 23px; font-weight: bold; color: yellow;">☯︎ Interpretation of Detailed fortune</span> <br>' +
                 '--------------------------<br>' +  
