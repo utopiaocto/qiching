@@ -1349,22 +1349,23 @@
             const second_digit = binary_values[Math.floor(Math.random() * binary_values.length)];
             return first_digit + second_digit;
         }
+        ...
         function showFortune() {
             const name = document.querySelector('#name').value;
             const binary_value = generateRandomBinaryValue();
 
             // if binary_value is not defined in the english_values0 or english_values, set a default value
-            const english_value0 = english_values0[binary_value] || "미정의 값";
-            const english_value1 = transformed_english_values0[binary_value] || "미정의 값";
-            const english_value = english_values[binary_value] || "미정의 값";
+            const english_value0 = english_values0[binary_value] || "Undefined value";
+            const english_value1 = transformed_english_values0[binary_value] || "Undefined value";
+            const english_value = english_values[binary_value] || "Undefined value";
 
             document.querySelector('#output').innerHTML = '☯︎ The I Ching hexagram I have observed currently is <br>' + english_value0 + ' the hexagram.';
             document.querySelector('#image').src = getImageUrl(binary_value);
 
             // Split english_value into two parts
-            const english_value_parts = english_value.split("[자세한 운세] <br><br>");
+            const english_value_parts = english_value.split("[Detailed fortune] <br><br>");
             const english_value_overall = english_value_parts[0];
-            const english_value_detailed = english_value_parts[1] || "자세한 운세가 없습니다.";
+            const english_value_detailed = english_value_parts[1] || "Detailed fortune is not available.";
 
             document.querySelector('#fortune').innerHTML =
             '<br>' +
@@ -1376,7 +1377,7 @@
             '<br>' +
             '<div style="text-align: center; color: white; background-color: black;">' + 
             '<span style="font-size: 17px; font-weight: bold; color: yellow;">' + english_value_overall + "</span><br>" +
-            '<span style="font-size: 20px; font-weight: bold; color: yellow;">☯︎ 내가 관측한 세부 상황별 해답</span> <br>' +
+            '<span style="font-size: 20px; font-weight: bold; color: yellow;">☯︎ The solution to the specific situation I have observed</span> <br>' +
             '--------------------------<br>' +  
             '<br>' +
             '</div>' +
